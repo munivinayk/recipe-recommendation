@@ -39,7 +39,7 @@ def makeWebhookResult(req):
     recipe = {'soup':"Tomato and Rice Soup", 'salad':"Sesame Salad", 'main':"Smoked Chicken Strata", 'side':"mixed grilled kebab", 'dessert':"dragon-dessert"}
     url = {'soup':"http://www.bhg.com/recipe/soups/italian-tomato-and-rice-soup/", 'salad':"http://www.bhg.com/recipe/salads/sesame-chicken-salad/", 'main':"http://www.diabeticlivingonline.com/recipe/casseroles/smoked-chicken-strata/", 'side':"http://www.bhg.com/recipe/chicken/mixed-grill-kabobs/", 'dessert':"http://www.bhg.com/recipe/cookies/dragon-dessert/"}
 
-    speech = "I think you should try the " + str(recipe[dishtype]) + " recipe that i found on "+ str(url[dishtype])
+    speech = "I think you should try the " + str(recipe[dishtype]) + " recipe that i found on " + str(url[dishtype])
 
     print("Response:")
     print(speech)

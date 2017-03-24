@@ -49,7 +49,7 @@ def makeWebhookResult(req):
         "displayText": speech,
         #"data": {},
         # "contextOut": [],
-        "source": "recipe-recommendation-updated"
+        "source": "apiai-recipe-recommendation"
         }
 
 

@@ -28,15 +28,18 @@ def webhook():
     return r
 
 def makeWebhookResult(req):
-    if req.get("result").get("action") != "shipping.cost":
+    if req.get("result").get("action") != "recipe-recommendation":
         return {}
     result = req.get("result")
     parameters = result.get("parameters")
-    zone = parameters.get("shipping-zone")
+    dishtype = parameters.get("dish-type")
+    protein = parameters.get("Protein")
+    cuisine = parameters.get("Cusine-type")
 
-    cost = {'Europe':100, 'North America':200, 'South America':300, 'Asia':400, 'Africa':500}
+    recipe = {'soup':"Tomato and Rice Soup", 'salad':"Sesame Salad", 'main':"Smoked Chicken Strata", 'side':"mixed grilled kebab", 'dessert':"dragon-dessert"}
+    url = {'soup':"http://www.bhg.com/recipe/soups/italian-tomato-and-rice-soup/", 'salad':"http://www.bhg.com/recipe/salads/sesame-chicken-salad/", 'main':"http://www.diabeticlivingonline.com/recipe/casseroles/smoked-chicken-strata/", 'side':"http://www.bhg.com/recipe/chicken/mixed-grill-kabobs/", 'dessert':"http://www.bhg.com/recipe/cookies/dragon-dessert/"}
 
-    speech = "The cost of shipping to " + zone + " is " + str(cost[zone]) + " euros."
+    speech = "I think you should try the " + str(recipe[dishtype]) + " recipe that i found on "+ str(url[dishtype])
 
     print("Response:")
     print(speech)
@@ -46,8 +49,8 @@ def makeWebhookResult(req):
         "displayText": speech,
         #"data": {},
         # "contextOut": [],
-        "source": "apiai-onlinestore-shipping"
-    }
+        "source": "recipe-recommendation-updated"
+        }
 
 
 if __name__ == '__main__':
